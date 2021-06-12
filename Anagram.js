@@ -1,5 +1,6 @@
-// frequency counter solution
+// frequency counter solution my solution
 const anagram = (str1, str2) => {
+  if (str1.length !== str2.length) return false;
   if (str1 === str2) return false;
   const charFrequency1 = {};
   const charFrequency2 = {};
@@ -16,3 +17,18 @@ const anagram = (str1, str2) => {
 };
 
 console.log(anagram("cat", "atc"));
+
+// frequency counter solution
+const anagram2 = (str1, str2) => {
+  if (str1.length !== str2.length) return false;
+  if (str1 === str2) return false;
+  const lookup = {};
+  for (const char of str1) {
+    lookup[char] = (lookup[char] || 0) + 1;
+  }
+  for (const char of str2) {
+    if (!lookup[char]) return false;
+    lookup[char] -= 1;
+  }
+  return true;
+};
